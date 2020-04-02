@@ -1,6 +1,7 @@
 package com.youngforconding.test;
 
 import com.youngforcoding.pojo.User;
+import org.junit.Test;
 
 import java.io.*;
 
@@ -16,6 +17,7 @@ import java.io.*;
 public class FrameTest {
 
 
+    @Test
     public void testSerializable() throws Exception {
         User user = new User();
         user.setId(1L);

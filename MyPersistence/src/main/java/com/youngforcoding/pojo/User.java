@@ -1,8 +1,6 @@
-package main.java.com.youngforcoding.pojo;
+package com.youngforcoding.pojo;
 
 import lombok.Data;
-
-import java.io.Serializable;
 
 /**
  *    
