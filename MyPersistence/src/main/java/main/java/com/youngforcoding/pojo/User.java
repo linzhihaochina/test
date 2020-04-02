@@ -1,4 +1,4 @@
-package com.youngforcoding.pojo;
+package main.java.com.youngforcoding.pojo;
 
 import lombok.Data;
 
