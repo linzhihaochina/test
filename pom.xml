@@ -10,9 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>
-            MyPersistence
-        </module>
+        <module>my_persistence</module>
+        <module>dangdang</module>
     </modules>
 
     <properties>

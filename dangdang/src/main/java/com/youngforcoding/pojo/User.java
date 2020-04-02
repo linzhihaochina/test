@@ -2,6 +2,8 @@ package com.youngforcoding.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  *    
  *  *  
@@ -12,7 +14,7 @@ import lombok.Data;
  *  
  */
 @Data
-public class User /*implements Serializable*/ {
+public class User implements Serializable {
 
     private Long id;
 
