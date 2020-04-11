@@ -1,0 +1,17 @@
+<mapper namespace="com.youngforcoding.dao.UserMapper">
+    <select id="selectList" resultType="com.youngforcoding.pojo.User">
+        select * from user_info
+    </select>
+    <select id = "selectUser" parameterType = "java.lang.Long" resultType="com.youngforcoding.pojo.User">
+        select * from user_info where id = ?
+    </select>
+    <insert id = "insertUser" parameterType="com.youngforcoding.pojo.User">
+        insert into user_info values(#{id},#{name},#{age})
+    </insert>
+    <update id = "updateUser" parameterType="com.youngforcoding.pojo.User">
+        update user_info set name = #{name}, age = #{age} where id = #{id}
+    </update>
+    <delete id = "deleteUser" parameterType="java.lang.Long">
+        delete from user_info where id = #{id}
+    </delete>
+</mapper>

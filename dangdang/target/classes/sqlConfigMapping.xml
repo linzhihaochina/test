@@ -1,0 +1,13 @@
+<config>
+    <datasource>
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test_db?useSSL=false&amp;characterEncoding=utf-8"></property>-->
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test_db?characterEncoding=utf-8"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="123456"></property>
+    </datasource>
+
+    <mappers>
+        <mapper resource="UserMapper.xml"></mapper>
+    </mappers>
+</config>

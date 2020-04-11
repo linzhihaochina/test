@@ -1,0 +1,100 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youngforcoding.dao.UserMapper">
+    <!--<cache type="org.mybatis.caches.redis.RedisCache"></cache>-->
+    <cache></cache>
+    <insert id="insert" parameterType="com.youngforcoding.pojo.User">
+        insert into user_info (<include refid="baseColumn"/>) values (#{id},#{name},#{age})
+    </insert>
+
+    <select id="selectList" resultType="user">
+        select
+        <include refid="baseColumn"/>
+        from user_info
+    </select>
+
+    <select id="findByCondition" parameterType="user" resultType="user" useCache="true" flushCache="true">
+        select
+        <include refid="baseColumn"/>
+        from user_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByCondition2" resultType="user">
+        select
+        <include refid="baseColumn"/>
+        from user_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByIDList" parameterType="list" resultType="user">
+        select
+        <include refid="baseColumn"/>
+        from user_info
+        <where>
+            <!--id IN-->
+            <!--<foreach collection="list" open="(" separator="," close=")" item="id">-->
+            <!--#{id}-->
+            <!--</foreach>-->
+            <foreach collection="list" open="id IN (" separator="," close=")" item="id">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <resultMap id="baseOrderResultMap" type="com.youngforcoding.pojo.User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <collection property="orderList" ofType="com.youngforcoding.pojo.Order">
+            <result column="oid" property="id"/>
+            <result column="user_id" property="userID"/>
+            <result column="product_name" property="productName"/>
+            <result column="productor" property="productor"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserAndOrderList" parameterType="long" resultMap="baseOrderResultMap" useCache="true">
+        select *,o.id oid from user_info as u,order_info as o where u.id = o.user_id and u.id = #{id}
+    </select>
+
+
+    <resultMap id="baseRoleResultMap" type="com.youngforcoding.pojo.User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <collection property="roleList" ofType="com.youngforcoding.pojo.Role">
+            <result column="rid" property="id"/>
+            <result column="ruser_id" property="userID"/>
+            <result column="role_name" property="roleName"/>
+        </collection>
+
+    </resultMap>
+
+    <select id="selectUserAndRoles" parameterType="list" resultMap="baseRoleResultMap">
+        select *,r.user_id as ruser_id,r.id as rid from user_info as u left join user_role as ur on u.id = ur.user_id
+        inner join role as r on u.id = r.user_id
+    </select>
+
+    <!--<select id="selectByID" parameterType="long" resultType="com.youngforcoding.pojo.User">-->
+        <!--select * from user_info where id = #{id}-->
+    <!--</select>-->
+
+    <sql id="baseColumn">
+        id,name,age
+    </sql>
+
+</mapper>

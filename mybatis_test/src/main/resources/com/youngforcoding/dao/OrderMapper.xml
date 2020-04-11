@@ -1,0 +1,21 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youngforcoding.dao.OrderMapper">
+
+    <resultMap id="baseResultMap" type="com.youngforcoding.pojo.Order">
+        <result property="id" column="id"/>
+        <result property="userID" column="user_id"/>
+        <result property="productName" column="product_name"/>
+        <result property="productor" column="productor"/>
+        <association property="user" javaType="com.youngforcoding.pojo.User">
+            <result property="id" column="user_id" jdbcType="BIGINT" javaType="long"/>
+            <result property="name" column="name" jdbcType="VARCHAR" javaType="string"/>
+            <result property="age" column="age" jdbcType="INTEGER" javaType="int"/>
+        </association>
+    </resultMap>
+    
+    
+    <select id="selectOrderList" parameterType="long" resultMap="baseResultMap">
+      select * from order_info as o,user_info as u where o.user_id = u.id
+    </select>
+
+</mapper>
