@@ -39,3 +39,4 @@ ReuseExecutor会将每次使用的PrepareStatement对象通过预处理sql作为
 
 ###请完善自定义持久层框架IPersistence，在现有代码基础上添加、修改及删除功能。【需要采用getMapper方式】
 请看my_persistence项目
+测试样例请看dangdang项目com.youngforcoding.test.FrameTest
