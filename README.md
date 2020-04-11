@@ -9,14 +9,15 @@
 ###2、Mybatis是否支持延迟加载？如果支持，它的实现原理是什么？
 1）MyBatis是支持懒加载的，针对于通过MyBatis关联查询的结果集支持懒加载。  
 2）当开启懒加载时，会在存在关联查询的时候使用动态代理对返回结果做动态代理增强，
-这个代理对象会在真正使用关联查询的结果集时再发起查询获取对应的数据。
+这个代理对象会在真正使用关联查询的结果集时再发起查询获取对应的数据。  
 
 ###3、Mybatis都有哪些Executor执行器？它们之间的区别是什么？
 1）MyBatis的执行器常用的有三种SimpleExecutor、BatchExecutor、ReuseExecutor如果开启二级缓存会将这些执行期再进行包装成带缓存的CachingExecutor
 在这个执行器中会先去查寻二级缓存，二级缓存不存在再去执行sql  
 2）SimpleExecutor是每次执行sql都会生成一个statement，获取结果集之后关闭，MyBatis默认使用该执行器。  
 BatchExecutor会将多次除了查询以外，需要操作数据库statement通过addBatch()缓存起来，等到真正执行executeBatch的时候才真正的去一次性执行。  
-ReuseExecutor会将每次使用的PrepareStatement对象通过预处理sql作为key进行缓存，复用PrepareStatement对象。等到下一次再遇见这个sql直接取出来该PrepareStatement对象。
+ReuseExecutor会将每次使用的PrepareStatement对象通过预处理sql作为key进行缓存，复用PrepareStatement对象。等到下一次再遇见这个sql直接取出来该PrepareStatement对象。  
+
 ###4、简述下Mybatis的一级、二级缓存（分别从存储结构、范围、失效场景。三个方面来作答）？
 1）一级缓存结构为HashMap，而二级缓存默认是HashMap结构，二级缓存可以自定义，MyBatis为SqlSession默认开启一级缓存，二级缓存需要使用者设置cacheEnable为true打开  
 一级缓存的key是通过statementID、分页参数RowBounds、以及预处理sql封装而成的一个对象，value存储的是查询的结果。  
