@@ -1,7 +1,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.youngforcoding.dao.UserMapper">
     <!--<cache type="org.mybatis.caches.redis.RedisCache"></cache>-->
-    <cache></cache>
+    <!--<cache></cache>-->
     <insert id="insert" parameterType="com.youngforcoding.pojo.User">
         insert into user_info (<include refid="baseColumn"/>) values (#{id},#{name},#{age})
     </insert>
@@ -59,7 +59,7 @@
         <result column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="age" property="age"/>
-        <collection property="orderList" ofType="com.youngforcoding.pojo.Order">
+        <collection property="orderList" ofType="com.youngforcoding.pojo.Order" fetchType="lazy">
             <result column="oid" property="id"/>
             <result column="user_id" property="userID"/>
             <result column="product_name" property="productName"/>
@@ -67,8 +67,25 @@
         </collection>
     </resultMap>
 
-    <select id="selectUserAndOrderList" parameterType="long" resultMap="baseOrderResultMap" useCache="true">
+    <resultMap id="baseOrderResultMap2" type="com.youngforcoding.pojo.User">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <collection property="orderList" ofType="com.youngforcoding.pojo.Order"
+                    select="com.youngforcoding.dao.OrderMapper.selectOrder" column="id" fetchType="lazy">
+            <result column="oid" property="id"/>
+            <result column="user_id" property="userID"/>
+            <result column="product_name" property="productName"/>
+            <result column="productor" property="productor"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectUserAndOrderList" parameterType="long" resultMap="baseOrderResultMap">
         select *,o.id oid from user_info as u,order_info as o where u.id = o.user_id and u.id = #{id}
+    </select>
+
+    <select id="selectUserAndOrderList2" parameterType="long" resultMap="baseOrderResultMap2">
+        select * from user_info where id = #{id}
     </select>
 
 

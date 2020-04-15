@@ -110,9 +110,9 @@ public class ReflectTest {
     }
 
     @Test
-    public void test02() throws Exception{
+    public void test02() throws Exception {
         Class<ReflectTargetTest> reflectTargetTestClass = ReflectTargetTest.class;
-        System.out.println(reflectTargetTestClass.getDeclaredMethod("setTarget",Object.class).getReturnType());
+        System.out.println(reflectTargetTestClass.getDeclaredMethod("setTarget", Object.class).getReturnType());
     }
 
 
@@ -127,6 +127,16 @@ public class ReflectTest {
         int[] arr2 = new int[3];
         System.arraycopy(arr, 0, arr2, 1, arr2.length - 1);
         System.out.println(Arrays.toString(arr2));
+    }
+
+    public <E> E getTarget(E e) {
+        return e;
+    }
+
+    @Test
+    public void test() {
+        new ReflectTest().<String>getTarget("22");
+
     }
 
 }

@@ -31,6 +31,8 @@ public interface UserMapper extends Serializable {
 
     User selectUserAndOrderList(Long id);
 
+    User selectUserAndOrderList2(Long id);
+
     List<User> selectUserAndRoles();
 
 

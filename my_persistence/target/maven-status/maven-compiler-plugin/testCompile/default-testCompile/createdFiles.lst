@@ -1,4 +1,5 @@
 com/youngforcoding/test/ReflectTargetFuTest.class
+com/youngforcoding/test/ParserTest.class
 com/youngforcoding/test/annotation/Custom.class
 com/youngforcoding/test/ClassLoaderTest.class
 com/youngforcoding/test/JDBCTest.class

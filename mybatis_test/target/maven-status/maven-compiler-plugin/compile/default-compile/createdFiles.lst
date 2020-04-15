@@ -1,2 +1,9 @@
-com/youngforcoding/dao/UserMapper.class
+com/youngforcoding/dao/AnnotationOrderMapper.class
+com/youngforcoding/dao/OrderMapper.class
+com/youngforcoding/dao/AnnotationRoleMapper.class
+com/youngforcoding/pojo/Order.class
+com/youngforcoding/interceptor/ExamplePlugin.class
+com/youngforcoding/dao/AnnotationUserMapper.class
+com/youngforcoding/pojo/Role.class
 com/youngforcoding/pojo/User.class
+com/youngforcoding/dao/UserMapper.class

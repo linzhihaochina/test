@@ -189,4 +189,12 @@ public class TestMyBatis {
         userList.forEach(System.out::println);
     }
 
+    @Test
+    public void lazyLoad() {
+        User user = userMapper.selectUserAndOrderList2(2L);
+        System.out.println(user);
+        List<Order> orderList = user.getOrderList();
+        System.out.println(user);
+    }
+
 }
