@@ -21,6 +21,7 @@
 
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 允许触发懒加载的方法-->
         <setting name="lazyLoadTriggerMethods" value=""/>
         <!--<setting name="logImpl" value="LOG4J" />-->
     </settings>
@@ -53,6 +54,7 @@
     <mappers>
         <!--<mapper resource="UserMapper.xml"></mapper>-->
         <!--<mapper resource="OrderMapper.xml"></mapper>-->
+        <mapper class="com.youngforcoding.dao.AnnotationUserMapper"/>
         <package name="com.youngforcoding.dao"/>
     </mappers>
 

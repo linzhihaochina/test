@@ -39,7 +39,7 @@
             <artifactId>jsqlparser</artifactId>
             <version>0.9.1</version>
         </dependency>
-
+        <!-- 通用mapper插件-->
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper</artifactId>
