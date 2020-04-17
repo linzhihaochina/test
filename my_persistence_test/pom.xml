@@ -9,7 +9,7 @@
         <artifactId>frame_test</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>dangdang</artifactId>
+    <artifactId>my_persistence_test</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 

@@ -11,7 +11,7 @@
 
     <modules>
         <module>my_persistence</module>
-        <module>dangdang</module>
+        <module>my_persistence_test</module>
         <module>mybatis_test</module>
     </modules>
 
